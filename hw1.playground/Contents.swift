@@ -22,31 +22,32 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: They are not the same type. The values passed in to the init function is type String?. The question mark means the value it contains is optional, so it is possible that it will contain some String value or a nil value. 
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(words: [String]) -> Bool {
+    static func arePalindromes(words: [String]) -> Bool {
         let reversedWords = words.map() {String($0.characters.reverse())}
-        var numElements = words.count
+        let numElements = words.count
         
-        for let i = 0; i < numElements; i++ {
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: Originally, the for loop used “let” keyword. “let” is used for constants, and you can only assign it a value once. The compiler did not like it because "i" is being incremented and reassigned at each loop. Also, if the word is a palindrome, then the if case within the for loop will never get executed, so nothing gets returned. However, the function expects a Bool to be returned.
 
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
+    static func isAnagram() -> Bool {
+        var countLetters : [Character : Int] = [Character : Int]() //Line X
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
         
@@ -89,7 +90,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: The syntax for declaring a dictionary is incorrect.
     
     
 }
